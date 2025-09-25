@@ -1,0 +1,39 @@
+- crée repo avec le projet Unity
+
+- Choisir la taille de base du terrain
+
+- intégrer la base Perlin Noise
+	-> d'abord en 2D basique
+	-> puis crée un terrain 3D avec Vertices de façon organique
+
+- adapter vertices pour être détectable par le jeu (le joueur doit pouvoir les détecter et les récupérer)
+
+	-> voir système grille coordonnées ?
+		-> en fonction de la position de la sélection, récupérer les vertices dans x position et y position, pas une vertices seulement, mais le groupes entre cette x et y position.
+
+- déformation du terrain par mouvement des vertices
+	->faire bouger les vertices
+	->faire en sorte que les vertices voisines soit affectés pour rester liées entre elles proprement et organiquement.
+
+- travailler la caméra
+	-> mouvement
+		-> flèches ?
+		-> souris sur un des bords de l'écran ?
+	-> zoom ?
+		-> molette
+
+- Partie autonome du jeu :
+
+	-> ajouter ressources basiques
+		-> points de collectes à la B&W2
+
+	-> ajouter des IA basiques (villageois B&W2 ?)
+		-> mouvement
+		-> impossibilité de monter si le terrain est trop abrupte ?
+	-> crée bâtiments basiques (une maison ? sert à rajouter des habitants ?)
+
+
+
+
+- reconfiguration des touches ?
+

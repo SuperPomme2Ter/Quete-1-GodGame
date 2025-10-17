@@ -7,17 +7,21 @@ public static class TextureGenerator {
         texture.filterMode = FilterMode.Point;
         texture.wrapMode = TextureWrapMode.Clamp;
         
+        // heightCurve.Evaluate((heightMap [x+
+        //                                  (240*xIndex), y+(240*yIndex)]))
         Color[] colourMap = new Color[width * height];
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                float currentHeight = heightMap [x+(xIndex*241), y+(yIndex*241)];
+                //float currentHeight = heightCurve.Evaluate(heightMap [x+(xIndex*241), y+(yIndex*241)]);
+                float currentHeight = heightMap [x+(xIndex*width), y+(yIndex*height)];
                 for (int i = 0; i < region.Length; i++)
                 {
                     if (currentHeight<=region[i].height)
                     {
                         colourMap[y * width + x] = region[i].colour;
+                        
                         break;
                     }
                 }

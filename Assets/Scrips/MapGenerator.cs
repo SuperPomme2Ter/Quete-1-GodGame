@@ -7,6 +7,7 @@ public struct TerrainType {
     public string name;
     public float height;
     public Color colour;
+    public Vector2 uvPos;
 }
 
 public class MapGenerator : MonoBehaviour
@@ -27,7 +28,9 @@ public class MapGenerator : MonoBehaviour
 
     public DrawMode drawMode;
 
-    public const int mapChunkSize = 241;
+    
+
+    public const int mapChunkSize = 200;
 
     [Range(1, 20)] public int numberOfChunks = 1;
     public Noise.NormalizeMode normalizeMode;
@@ -57,8 +60,12 @@ public class MapGenerator : MonoBehaviour
     public float MeshOffset = 1;
 
     public AnimationCurve meshHeightCurve;
+    
+    public Texture2D solTest;
 
     private List<List<MeshData>> aaaa;
+
+    
     
     
     
@@ -66,7 +73,7 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateMap()
     {
-        int totalChunks = numberOfChunks * numberOfChunks;
+        //int totalChunks = numberOfChunks * numberOfChunks;
         int mapTotalSize = mapChunkSize * numberOfChunks;
         if (SeedType.Random == seedType)
         {
@@ -123,7 +130,7 @@ public class MapGenerator : MonoBehaviour
                 aaaa.Add(new List<MeshData>());
                 for (int x = 0; x < numberOfChunks; x++)
                 {
-                    aaaa[y].Add(MeshGenerator.GenerateTerrainMesh(x, y, noiseMap, MeshOffset, meshHeightCurve, LoD));
+                    aaaa[y].Add(MeshGenerator.GenerateTerrainMesh(mapChunkSize,regions,solTest,x, y, noiseMap, MeshOffset, meshHeightCurve, LoD));
 
                 }
                 //Debug.Log(indexRef);
@@ -137,7 +144,8 @@ public class MapGenerator : MonoBehaviour
             {
                 for (int x = 0; x < numberOfChunks; x++)
                 {
-                    allTextures.Add(TextureGenerator.TextureFromColourMap(regions,y,x,noiseMap,mapChunkSize, mapChunkSize));
+                    //allTextures.Add(TextureGenerator.TextureFromColourMap(regions,y,x,noiseMap,mapChunkSize, mapChunkSize));
+                    allTextures.Add(solTest);
                 }
             }
 
@@ -148,7 +156,7 @@ public class MapGenerator : MonoBehaviour
             int b = 0;
             
             
-            display.DrawMesh(aaaa, allTextures);
+            display.DrawMesh(aaaa, allTextures,mapChunkSize);
         }
 
         

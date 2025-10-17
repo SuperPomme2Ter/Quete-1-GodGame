@@ -80,8 +80,8 @@ public static class Noise {
                     float normalizedHeight = (noiseMap[x, y] + 1)/(2f*maxPossibleHeight/2f);
                     noiseMap[x,y]=normalizedHeight;
                 }
-                
             }
+            
         }
 
         return noiseMap;

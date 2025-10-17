@@ -22,7 +22,7 @@ public class MapDisplay : MonoBehaviour {
         textureRender.transform.localScale = new Vector3 (texture.width, 1, texture.height);
     }
 
-    public void DrawMesh(List<List<MeshData>> allMesh, List<Texture2D> texture)
+    public void DrawMesh(List<List<MeshData>> allMesh, List<Texture2D> texture,int mapChunkSize)
     {
         ClearMesh();
 
@@ -31,7 +31,7 @@ public class MapDisplay : MonoBehaviour {
         {
             for (int x = 0; x < allMesh[y].Count; x++)
             {
-                GameObject newMesh=Instantiate(meshRenderer.gameObject, new Vector3(240*y,0,-240*x), Quaternion.identity,meshParent.transform);
+                GameObject newMesh=Instantiate(meshRenderer.gameObject, new Vector3((mapChunkSize-1)*y,0,-(mapChunkSize-1)*x), Quaternion.identity,meshParent.transform);
                 Mesh aaa = allMesh[x][y].CreateMesh();
                 newMesh.GetComponent<MeshFilter>().mesh = aaa;
                 newMesh.GetComponent<MeshRenderer>().material.mainTexture = texture[a];

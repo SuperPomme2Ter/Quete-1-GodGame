@@ -9,17 +9,13 @@ public class CameraControls : MonoBehaviour
     [SerializeField] float zoomspeed=1;
     [SerializeField] float movementSpeed=1;
     [SerializeField] float rotationSpeed=1;
-    private bool moving = false;
     CameraMovements movements;
     void Start()
     {
         cam = GetComponent<Camera>();
         movements = GetComponent<CameraMovements>();
     }
-
-    private void Update()
-    {
-    }
+    
 
     // Update is called once per frame
     public void Zoom(InputAction.CallbackContext context)
@@ -33,7 +29,6 @@ public class CameraControls : MonoBehaviour
     {
         if (context.started)
         {
-            moving = true;
             Vector2 moveInput = context.ReadValue<Vector2>();
             movements.enabled = true;
             movements.movement=new Vector3(moveInput.x,0,moveInput.y)*movementSpeed*Time.deltaTime;;
